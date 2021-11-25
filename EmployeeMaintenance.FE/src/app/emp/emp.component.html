@@ -1,0 +1,43 @@
+<div class="row">
+  <!-- create new employee -->
+  <div class="col-12">
+    <h3>Create New Employee </h3>
+    <div class="create-form">
+      <!-- emp-form component -->
+      <app-emp-form (formSubmitEvent)="createEmp($event)"></app-emp-form>
+    </div>
+  </div>
+    <!-- Employee list -->
+  <div class="col-12">
+    <h3>Employee List</h3>
+    <div *ngIf="isLoading; else list">
+      <h5>Loading...</h5>
+    </div>
+    <ng-template #list>
+      <div class="emp-list">
+        <div class="row">
+        <h5 class="col-md-3">First Name</h5>
+        <h5 class="col-md-3">Last Name</h5>
+        <h5 class="col-md-2">Employee Num</h5>
+        </div>
+        <div *ngFor="let emp of empList; let i= index">
+          <div class="row">
+            <div class="col-md-3">{{emp.firstName}}</div>
+            <div class="col-md-3">{{emp.lastName}}</div>
+            <div class="col-md-2">{{emp.employeeNum}}</div>
+            <button class="btn btn-primary col-md-3"
+              (click)="empDetailsId = emp.employeeId; isDetailsOpen=true">Details</button>
+              <!-- emp-details component -->
+            <app-emp-details  class="col-md-10" 
+                              *ngIf="empDetailsId == emp.employeeId && isDetailsOpen==true" 
+                              [employee]="emp"
+                              (deleteEvent)="deleteEmp(emp.employeeId)" 
+                              (editEvent)="editEmp($event)" 
+                              (closeEvent)="isDetailsOpen=false">
+            </app-emp-details>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<form [formGroup]="empFormGroup" (ngSubmit)="onFormSubmit()"  method="post">
+  <div class="form-group">
+    <label>First Name</label>
+    <input type="text" class="form-control" id="firstName" formControlName="firstName">
+  </div>
+  <div class="form-group">
+    <label>Last Name</label>
+    <input type="text" class="form-control" id="lastName" formControlName="lastName">
+  </div>
+  <div class="form-group">
+    <label>Birth Date</label>
+    <input type="date" class="form-control" id="birthDate" formControlName="birthDate">
+  </div>
+  <div class="form-group">
+    <label>Employee Number</label>
+    <input type="text" class="form-control" id="employeeNum" formControlName="employeeNum">
+  </div>
+  <div class="form-group">
+    <label>Employed Date</label>
+    <input type="date" class="form-control" id="employedDate" formControlName="employedDate">
+  </div>
+  <div class="form-group">
+    <label>Terminated Date</label>
+    <input type="date" class="form-control" id="terminatedDate" formControlName="terminatedDate">
+  </div>
+  <div><button class="btn btn-success" type="submit">Submit</button></div>
+</form>
